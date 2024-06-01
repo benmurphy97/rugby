@@ -8,7 +8,7 @@ Analysis of rugby data.
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/rugby_ball.jpeg" alt="Logo" width="300" height="250">
+    <img src="images/rugby_ball.jpeg" alt="Logo" width="600" height="500">
   </a>
 </div>
 
