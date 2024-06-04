@@ -1,33 +1,41 @@
 # Rugby Analysis
-A deep dive into different aspects of the beautiful game of rugby union.
+Data science meets the beautiful game of rugby union. :smile:
 
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
-TODO
+The overall aim of this project is to try and "beat the bookies" albeit with low stakes. With a personal interest in rugby, this domain proves to be an interesting area to apply data science methodologies.
 
-TODO
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+The project is laid out in folders corresponding to stages in the project lifecycle.
 
-### Built With
+### 1_data_acquisition
+* scripts used to scrape data from the web or access apis.
+
+### 2_data_cleaning
+* scripts used to merge and clean data from the different sources.
+
+### 3_data_exploration
+* scripts used to explore data.
+
+### 4_modelling
+* scripts used to model and predict.
+
+### 5_evaluation_presentation
+* scripts used to evaluate and present results
+
+## Built With
 
 * [![Python][Python.com]][Python-url]
 
-<!-- CONTACT -->
+
 ## Contact
 
-Ben Murphy - (https://www.linkedin.com/in/ben-murphy-/) - ben.murphy@live.ie
+Ben Murphy - (https://www.linkedin.com/in/ben-murphy-/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
 [product-screenshot]: images/screenshot.png
 [Python.com]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [Python-url]: https://python.org 
