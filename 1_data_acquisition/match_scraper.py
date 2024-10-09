@@ -9,8 +9,8 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # create url for specified league and year
-league = 'urc'
-year = 2024
+league = 'top-14'
+year = 2025
 
 if league in ['urc', 'premiership', 'top-14', 'champions-cup']:
     if year < 2025:
