@@ -9,13 +9,13 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # create url for specified league and year
-league = 'champions-cup'
+league = 'urc'
 year = 2024
 
 if league in ['urc', 'premiership', 'top-14', 'champions-cup']:
-    if year < 2024:
+    if year < 2025:
         url = f"https://all.rugby/tournament/{league}-{str(year)}/fixtures-results"
-    elif year == 2024:
+    elif year == 2025:
         url = f"https://all.rugby/tournament/{league}/fixtures-results"
     print(url)
 else: 
@@ -212,6 +212,7 @@ scores = [i for i in scores if i != 'cancelled']
 df = pd.concat(list_of_match_dataframes)
 df['match_result'] = scores
 
-out_path = f"data/match_data/{league}_{year}.csv"
+out_path = f"0_data/match_data/{league}_{year}.csv"
+
 df.to_csv(out_path, index=False)
 
