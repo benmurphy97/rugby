@@ -9,7 +9,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # create url for specified league and year
-league = 'top-14'
+league = 'urc'
 year = 2025
 
 if league in ['urc', 'premiership', 'top-14', 'champions-cup']:
@@ -21,7 +21,8 @@ if league in ['urc', 'premiership', 'top-14', 'champions-cup']:
 else: 
     print("league not recognised")
 
-
+# links_df containing the end of the url for each match
+# scores is a list containing the score or the time of fixture if the hasnt happened yet
 def get_links_df(url):
 
     # text of fixtures page
@@ -52,6 +53,11 @@ list_of_player_dataframes = []
 # loop over links and get match data
 for link in links_df['links']:
     match_link = "https://all.rugby" + link
+
+    # print("DEBUG")
+    # match_link = "https://all.rugby/match/21989/urc-2024-2025/benetton-leinster"
+    # match_link = "https://all.rugby/match/21970/urc-2024-2025/edinburgh-leinster"
+
     print("\n", match_link)
 
     match_html_text = requests.get(match_link, headers={
@@ -123,30 +129,36 @@ for link in links_df['links']:
 
         match_events = dfs[0]
 
-        # n_tries
-        home_tries = ' '.join(match_events['Try'].iloc[:23].dropna().values).split('\'')
+        # n_tries - must account for penalty tries appearing a row after the players if one is present.
+        if match_events['Try'][24] == 'Replacements':
+            last_index = 24
+        else:
+            last_index = 25
+        home_tries = ' '.join(match_events['Try'].iloc[:last_index].dropna().values).split('\'')
         minutes_of_home_tries = [str(int(i)) for i in home_tries if len(i)>0]
         home_n_tries = len(minutes_of_home_tries)
-
-        away_tries = ' '.join(match_events['Try.1'].iloc[:23].dropna().values).split('\'')
+        
+        away_tries = ' '.join(match_events['Try.1'].iloc[:last_index].dropna().values).split('\'')
         minutes_of_away_tries = [str(int(i)) for i in away_tries if len(i)>0]
         away_n_tries = len(minutes_of_away_tries)
 
+        # only tries need this special indexing
+
         # n_penalties
-        home_pen_kicks = ' '.join(match_events['Penalty'].iloc[:23].dropna().values).split('\'')
+        home_pen_kicks = ' '.join(match_events['Penalty'].iloc[:24].dropna().values).split('\'')
         minutes_of_home_pen_kicks = [str(int(i)) for i in home_pen_kicks if len(i)>0]
         home_n_pen_kicks = len(minutes_of_home_pen_kicks)
 
-        away_pen_kicks = ' '.join(match_events['Penalty.1'].iloc[:23].dropna().values).split('\'')
+        away_pen_kicks = ' '.join(match_events['Penalty.1'].iloc[:24].dropna().values).split('\'')
         minutes_of_away_pen_kicks = [str(int(i)) for i in away_pen_kicks if len(i)>0]
         away_n_pen_kicks = len(minutes_of_away_pen_kicks)
 
         # n_conversions
-        home_conversions = ' '.join(match_events['Conversion'].iloc[:23].dropna().values).split('\'')
+        home_conversions = ' '.join(match_events['Conversion'].iloc[:24].dropna().values).split('\'')
         minutes_of_home_conversions = [str(int(i)) for i in home_conversions if len(i)>0]
         home_n_conversions = len(minutes_of_home_conversions)
 
-        away_conversions = ' '.join(match_events['Conversion.1'].iloc[:23].dropna().values).split('\'')
+        away_conversions = ' '.join(match_events['Conversion.1'].iloc[:24].dropna().values).split('\'')
         minutes_of_away_conversions = [str(int(i)) for i in away_conversions if len(i)>0]
         away_n_conversions = len(minutes_of_away_conversions)
         
