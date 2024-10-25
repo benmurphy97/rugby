@@ -17,6 +17,8 @@ for data_file in data_files:
 
 df = pd.concat(dfs)
 
+df = df.loc[df['competition']=='urc']
+
 
 df['round_stage'] = df['meta'].apply(lambda x: x.split('Round : ')[1])
 df['round_stage'] = df['round_stage'].apply(lambda x: x.split('  All times shown are french')[0])
@@ -96,5 +98,5 @@ df.drop(columns=['match_result',
                 'meta', 'match_date_', 'match_month', 'match_day', 'match_date'],
         inplace=True)
 
-df.to_csv(f"{data_path}/cleaned_match_data.csv", index=True)
+df.to_csv(f"{data_path}/urc_matches.csv", index=True)
 

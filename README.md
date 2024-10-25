@@ -9,14 +9,17 @@ The overall aim of this project is to try and "beat the bookies" albeit with low
 
 The project is laid out in folders corresponding to stages in the project lifecycle.
 
+### 0_sata
+* data used in analysis - source: All.Rugby
+
 ### 1_data_acquisition
 * scripts used to scrape data from the web or access apis.
 
 ### 2_data_cleaning
 * scripts used to merge and clean data from the different sources.
 
-### 3_data_exploration
-* scripts used to explore data.
+### 3_modelling
+* scripts used to perform predictions
 
 ### 4_modelling
 * scripts used to model and predict.
