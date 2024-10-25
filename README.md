@@ -22,7 +22,7 @@ The project is laid out in folders corresponding to stages in the project lifecy
 * scripts used to perform predictions
 
 ### MEDIUM_ARTICLE_CODE
-* Code used to build the visualisations and analysis my recent Medium article.
+* Code used to build the visualisations and analysis in my recent Medium article.
 
 ## Built With
 
