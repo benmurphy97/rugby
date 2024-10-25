@@ -18,14 +18,11 @@ The project is laid out in folders corresponding to stages in the project lifecy
 ### 2_data_cleaning
 * scripts used to merge and clean data from the different sources.
 
-### 3_modelling
+### 3_data_exploration
 * scripts used to perform predictions
 
-### 4_modelling
-* scripts used to model and predict.
-
-### 5_evaluation_presentation
-* scripts used to evaluate and present results
+### MEDIUM_ARTICLE_CODE
+* Code used to build the visualisations and analysis my recent Medium article.
 
 ## Built With
 
