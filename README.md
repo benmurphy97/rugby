@@ -9,7 +9,7 @@ The overall aim of this project is to try and "beat the bookies" albeit with low
 
 The project is laid out in folders corresponding to stages in the project lifecycle.
 
-### 0_sata
+### 0_data
 * data used in analysis - source: All.Rugby
 
 ### 1_data_acquisition
