@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore')
 
 # create url for specified league and year
 league = 'urc'
-year = 2022
+year = 2025
 
 if league in ['urc', 'premiership', 'top-14', 'champions-cup']:
     if year < 2025:
@@ -57,6 +57,7 @@ for link in links_df['links']:
     # print("DEBUG")
     # match_link = "https://all.rugby/match/21989/urc-2024-2025/benetton-leinster"
     # match_link = "https://all.rugby/match/21970/urc-2024-2025/edinburgh-leinster"
+    # match_link = "https://all.rugby/match/18097/urc-2022-2023/benetton-glasgow"
 
     print("\n", match_link)
 
@@ -132,8 +133,15 @@ for link in links_df['links']:
         # n_tries - must account for penalty tries appearing a row after the players if one is present.
         if match_events['Try'][24] == 'Replacements':
             last_index = 24
-        else:
+            pen_try_minutes_home = ''
+            pen_try_minutes_away = ''
+        else: # pen try scored
             last_index = 25
+            pen_try_minutes_home = match_events['Try'].iloc[24]
+            pen_try_minutes_away= match_events['Try.1'].iloc[24]
+
+
+
         home_tries = ' '.join(match_events['Try'].iloc[:last_index].dropna().values).split('\'')
         minutes_of_home_tries = [str(int(i)) for i in home_tries if len(i)>0]
         home_n_tries = len(minutes_of_home_tries)
@@ -176,6 +184,9 @@ for link in links_df['links']:
         match_df['minutes_of_home_conversions'] = '_'.join(minutes_of_home_conversions)
         match_df['away_n_conversions'] = away_n_conversions
         match_df['minutes_of_away_conversions'] = '_'.join(minutes_of_away_conversions)
+
+        match_df['pen_try_minutes_home'] = pen_try_minutes_home
+        match_df['pen_try_minutes_away'] = pen_try_minutes_away
 
         list_of_match_dataframes.append(match_df)
 
