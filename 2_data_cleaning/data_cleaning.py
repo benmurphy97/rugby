@@ -4,7 +4,7 @@ from os import listdir
 from os.path import isfile, join
 
 
-data_path = "0_data/match_data"
+data_path = "/Users/benmurphy/Data/rugby_data/match_data"
 data_files = [f for f in listdir(data_path) if isfile(join(data_path, f))]
 
 dfs = []
@@ -17,7 +17,7 @@ for data_file in data_files:
 
 df = pd.concat(dfs)
 
-df = df.loc[df['competition']=='urc']
+# df = df.loc[df['competition']=='urc']
 
 
 df['round_stage'] = df['meta'].apply(lambda x: x.split('Round : ')[1])
@@ -84,6 +84,11 @@ df['away_backs_ages'] = [int(i.split(' ')[0]) if type(i)==str else -1 for i in d
 
 
 
+
+
+
+
+
 df.drop(columns=['match_result', 
                  'Home JIFF players  ( read JIFF study in Top 14 )', 
                  'Away JIFF players  ( read JIFF study in Top 14 )', 
@@ -98,5 +103,5 @@ df.drop(columns=['match_result',
                 'meta', 'match_date_', 'match_month', 'match_day', 'match_date'],
         inplace=True)
 
-df.to_csv(f"{data_path}/urc_matches.csv", index=True)
+df.to_csv(f"{data_path}/all_matches.csv", index=True)
 
